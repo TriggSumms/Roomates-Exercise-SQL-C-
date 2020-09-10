@@ -24,39 +24,48 @@ namespace Roommates
 
             foreach (Room room in allRooms)
             {
-            Console.WriteLine($"{room.Id} {room.Name} {room.MaxOccupancy}");
+                Console.WriteLine($"{room.Id} {room.Name} {room.MaxOccupancy}");
             }
 
             Console.WriteLine("----------------------------");
             Console.WriteLine("Getting Room with Id 1");
 
-                Room singleRoom = roomRepo.GetById(1);
+            Room singleRoom = roomRepo.GetById(1);
 
-                Console.WriteLine($"{singleRoom.Id} {singleRoom.Name} {singleRoom.MaxOccupancy}");
+            Console.WriteLine($"{singleRoom.Id} {singleRoom.Name} {singleRoom.MaxOccupancy}");
 
-  Room bathroom = new Room
-{
-    Name = "Bathroom",
-    MaxOccupancy = 1
-};
+            Room bathroom = new Room
+            {
+                Name = "Bathroom",
+                MaxOccupancy = 1
+            };
 
-roomRepo.Insert(bathroom);
+            roomRepo.Insert(bathroom);
 
-Console.WriteLine("-------------------------------");
+            Console.WriteLine("-------------------------------");
             Console.WriteLine($"Added the new Room with id {bathroom.Id}");
-       
-            
-            
-//Room EditBathroom = new Room
-//{
-//   Name = "Bathroom",
-//    MaxOccupancy = 2
-//};
-//roomRepo.Update(EditBathroom);
-//Console.WriteLine("-------------------------------");
-//Console.WriteLine($"Edited this room to show changes to MaxOccupancy {bathroom.Id}");
 
 
+            //Room EditBathroom = new Room
+            //{
+            //   Name = "Bathroom",
+            //    MaxOccupancy = 2
+            //};
+            //roomRepo.Update(EditBathroom);
+            //Console.WriteLine("-------------------------------");
+            //Console.WriteLine($"Edited this room to show changes to MaxOccupancy {bathroom.Id}");
+
+            RoommateRepository roommateRepo = new RoommateRepository(CONNECTION_STRING);
+
+            Console.WriteLine("Getting All The Current Roommates:");
+            Console.WriteLine();
+
+            List<Roommate> allRoommates = roommateRepo.GetAll();
+
+            foreach (Roommate roommate in allRoommates)
+            {
+                Console.WriteLine($"{roommate.Room.Id} {roommate.Firstname} {roommate.Lastname} {roommate.RentPortion} {roommate.MovedInDate}");
+            }
 
         }
 
