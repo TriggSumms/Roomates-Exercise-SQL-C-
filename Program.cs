@@ -55,19 +55,35 @@ namespace Roommates
             //Console.WriteLine("-------------------------------");
             //Console.WriteLine($"Edited this room to show changes to MaxOccupancy {bathroom.Id}");
 
-            RoommateRepository roommateRepo = new RoommateRepository(CONNECTION_STRING);
+            RoommateRepository roommateRepository = new RoommateRepository(CONNECTION_STRING);
 
             Console.WriteLine("Getting All The Current Roommates:");
             Console.WriteLine();
 
-            List<Roommate> allRoommates = roommateRepo.GetAll();
+            //attempting GetAll Id's
+            List<Roommate> allRoommates = roommateRepository.GetAll();
 
             foreach (Roommate roommate in allRoommates)
             {
-                Console.WriteLine($"{roommate.Room.Id} {roommate.Firstname} {roommate.Lastname} {roommate.RentPortion} {roommate.MovedInDate}");
+                Console.WriteLine($"{roommate.Id}  {roommate.Firstname} {roommate.Lastname} {roommate.RentPortion} {roommate.MovedInDate}");
             }
 
+            //By single Id
+            Roommate aRoommate = roommateRepository.GetById(1);
+            Console.WriteLine($"{aRoommate.Firstname} {aRoommate.Lastname}");
+
+            //Adding A Roommate via INSERT METHOD
+            Roommate newRoommate = new Roommate()
+            {
+                Firstname = "BillyBoi",
+                Lastname = "CmonPoni",
+                MovedInDate = DateTime.Now.AddDays(-1),
+                //Room.id = 1,
+                RentPortion = 10
+            };
+            roommateRepository.Insert(newRoommate);
         }
+        /*{room.Id} */
 
     }
 }
