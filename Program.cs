@@ -43,8 +43,7 @@ namespace Roommates
 roomRepo.Insert(bathroom);
 
 Console.WriteLine("-------------------------------");
-
-Console.WriteLine($"Added the new Room with id {bathroom.Id}");
+            Console.WriteLine($"Added the new Room with id {bathroom.Id}");
        
             
             
@@ -56,6 +55,9 @@ Console.WriteLine($"Added the new Room with id {bathroom.Id}");
 //roomRepo.Update(EditBathroom);
 //Console.WriteLine("-------------------------------");
 //Console.WriteLine($"Edited this room to show changes to MaxOccupancy {bathroom.Id}");
+
+
+
         }
 
     }
